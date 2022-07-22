@@ -1,10 +1,12 @@
-import Screen1 from "./Screen1";
+import Background from "./Background.js";
+import Footer from "./Footer.js"
 
 export default function App() {
 
     return (
         <div>
-            <Screen1 />
+            <Background />
+            <Footer />
         </div>
     )
 }

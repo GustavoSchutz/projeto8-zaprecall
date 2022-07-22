@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.background {
+    width: 100vw;
+    height: 100vh;
+    background-color: #FB6B6B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.button {
+    background-color: white;
+    width: 70vw;
+    height: 8vh;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #D70900;
+    border: .15rem solid #D70900;
+    margin-top: 0vh;
+    box-shadow: 0 .25rem .25rem rgba(0, 0, 0, 0.15);
+    font-family: 'Recursive', sans-serif;
+    font-size: 1.1rem;
+
+}
+h1 {
+    font-family: 'Righteous', cursive;
+    margin: 4vh 0;
+    font-size: 2.2rem;
+    color: #ffffff;
+}
+
+.logo img {
+    width: 40vw;
+}
+.screen1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+/* TELA2 */
+
+.screen2 {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+}
+.card {
+    background-color: #ffffff;
+    width: 70vw;
+    height: 8vh;
+    border-radius: 10px;
+    border: .15rem solid #D70900;
+    box-shadow: 0 .25rem .25rem rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    transition: 2s;
+    
+}
+.active {
+    height: 16vh;
+}
+.frontCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: inherit;
+}
+p {
+    font-family: 'Recursive', sans-serif;
+    margin-left: 1rem;
+}
+.card ion-icon {
+    font-size: 1.6rem;
+    margin-right: 1rem;
+}
+.title {
+    display: flex;
+    margin-bottom: 2rem;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+.smallimg {
+    width: 8vw;
+    height: 16vw;
+    margin-right: 1rem;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Recursive', sans-serif;
+    color: #333333;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+}
+
+
+/* NEED TO BE ON THE BOTTOM */
+.hidden {
+    display: none;
+}
+/* TEMPORÁRIO PELO AMO DE DEEEEEEEEEEEEEEEEEEEEEEEUS!!!11!!UM!! */
+
+.screen1 {
+    display: none;
+}
