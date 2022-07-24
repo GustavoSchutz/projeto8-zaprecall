@@ -116,7 +116,24 @@ p {
     color: #333333;
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
 }
-
+.backCard {
+    height: inherit;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.question {
+    margin: .7rem 0 0 .7rem;
+}
+h3 {
+    font-family: 'Recursive', sans-serif;
+    font-size: 1.1rem;
+}
+.enter {
+    display: flex;
+    justify-content: flex-end;
+}
 
 /* NEED TO BE ON THE BOTTOM */
 .hidden {
