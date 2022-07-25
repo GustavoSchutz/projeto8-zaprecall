@@ -10,32 +10,71 @@ const deckdata = [
 
 
 
-function FrontCard({d}) {
+function FrontCard(props) {
     return (
         <div className="frontCard">
-            <p className="frontCardTittle">{(d.title)}</p>
+            <p className="frontCardTittle">{(props.d.title)}</p>
             <ion-icon className="questionIcon" name="play"></ion-icon>
         </div>
     )
 }
 
-function BackCard({d}) {
+function BackCard(props) {
+
+    const [finishedCard, setFinishedCard] = useState("finishedCard hidden");
+    const [finishedCardTittle, setfinishedCardTittle] = useState("");
+    const [finishedCardIconClass, setfinishedCardIconClass] = useState("");
+    const [finishedCardIconName, setfinishedCardIconName] = useState("");
 
     const [backCardVisibility, setBackCardVisibility] = useState("backCard");
 
     const [answerCardVisibility, setAnswerCardVisibility] = useState("anwerCard hidden")
 
-    function handleClickSubmit() {
+    function handleButtonMissed() {
         console.log("handelou o clique");
+        // setCardClass("card");
+        setAnswerCardVisibility("anwerCard hidden");
+        setFinishedCard("finishedCard");
+        setfinishedCardTittle("frontCardTittle missed");
+        setfinishedCardIconClass("questionIcon missed");
+        setfinishedCardIconName("close-circle");
+        cardActive = 0;
+    }
+
+    function handleButtonAlmost() {
+        setAnswerCardVisibility("anwerCard hidden");
+        setFinishedCard("finishedCard");
+        setfinishedCardTittle("frontCardTittle almost");
+        setfinishedCardIconClass("questionIcon almost");
+        setfinishedCardIconName("help-circle");
+        cardActive = 0;
+        // rightAnswers++
+
+    }
+
+    function handleButtonZap() {
+        setAnswerCardVisibility("anwerCard hidden");
+        setFinishedCard("finishedCard");
+        setfinishedCardTittle("frontCardTittle zap");
+        setfinishedCardIconClass("questionIcon zap");
+        setfinishedCardIconName("checkmark-circle");
+        cardActive = 0;
+        // rightAnswers++
+    }
+
+    function handleClickSubmit() {
         setBackCardVisibility("backCard hidden");
         setAnswerCardVisibility("answerCard")
     }
-
+<div className="frontCard">
+            <p className="frontCardTittle">{(props.d.title)}</p>
+            <ion-icon className="questionIcon" name="play"></ion-icon>
+        </div>
     return (
     <>
         <div className={backCardVisibility}>
             <div className="question">
-                <h3>{d.question}</h3>
+                <h3>{props.d.question}</h3>
             </div>
             <div className="enter">
                 <div onClick={() => {
@@ -47,14 +86,30 @@ function BackCard({d}) {
         </div>
         <div className={answerCardVisibility}>
             <div className="answer">
-                <h3>{d.answer}</h3>
+                <h3>{props.d.answer}</h3>
             </div>
             <div className="buttons">
-                <div className="buttonMissed"><p className="paragraphButtonsSubmit">Não lembrei</p></div>
-                <div className="buttonAlmost"><p className="paragraphButtonsSubmit">Quase não lembrei</p></div>
-                <div className="buttonZap"><p className="paragraphButtonsSubmit">Zap!</p></div>
+                <div onClick={() => {
+                    handleButtonMissed();
+                    props.changeClass("card")
+                    }} className="buttonMissed"><p className="paragraphButtonsSubmit">Não lembrei</p></div>
+                <div onClick={() => {
+                    handleButtonAlmost();
+                    props.changeClass("card")
+                    }} className="buttonAlmost"><p className="paragraphButtonsSubmit">Quase não lembrei</p></div>
+                <div onClick={() => {
+                    handleButtonZap();
+                    props.changeClass("card")
+                    }} className="buttonZap"><p className="paragraphButtonsSubmit">Zap!</p></div>
             </div>
         </div>
+        <div className={finishedCard}>
+            <p className={finishedCardTittle}>{(props.d.title)}</p>
+            <div className={finishedCardIconClass}>
+                <ion-icon className={finishedCardIconClass} name={finishedCardIconName}></ion-icon>
+            </div>
+        </div>
+        
     </>
     )
    
@@ -64,7 +119,7 @@ let cardActive = 0;
 
 
 
-function Cards({ d }) {
+function Cards({d}) {
 
 
     const [cardClass, setCardClass] = useState("card");
@@ -91,7 +146,7 @@ function Cards({ d }) {
         startZap();
       }}
     >
-      {checked ? <BackCard d={d} /> : <FrontCard d={d} />}
+      {checked ? <BackCard d={d} changeClass={cardClass => setCardClass(cardClass)} /> : <FrontCard d={d} />}
     </li>
   );
 }

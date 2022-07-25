@@ -152,6 +152,12 @@ h3 {
     flex-direction: column;
     justify-content: space-between;
 }
+.finishedCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: inherit;
+}
 .buttonMissed {
     background-color: red;
     height: 5vh;
@@ -184,6 +190,27 @@ h3 {
     text-align: center;
     margin: 0;
     font-family: 'Recursive', sans-serif;
+}
+.missed ion-icon{
+    color: red;
+}
+.missed {
+    color: red;
+    text-decoration: line-through;
+}
+.almost ion-icon {
+    color: orange;
+}
+.almost {
+    color: orange;
+    text-decoration: line-through;
+}
+.zap ion-icon {
+    color: green;
+}
+.zap {
+    color: green;
+    text-decoration: line-through;
 }
 
 
