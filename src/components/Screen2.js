@@ -1,12 +1,12 @@
-import { useState } from "react";
+
 import Title from "./Title";
 import Deck from "./Deck";
 
-export default function Screen2() {
+export default function Screen2(props) {
 
-   
+
     return (
-        <div className="screen2">
+        <div className={props.changeDisplayScreen2}>
             <Title />
             <Deck />
         </div>

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import setinha from "../assets/images/setinha.png"
+import Footer from "./Footer.js"
+
 
 const deckdata = [
     { key: "q1", title: "Pergunta 1", question: "O que é JSX?", answer:"Uma extensão de linguagem do JavaScript" },
@@ -21,6 +23,16 @@ function FrontCard(props) {
 
 function BackCard(props) {
 
+    let newFooterData;
+
+
+
+    // function addFooterData() {
+    //     setFooterData(...footerData, newFooterData);
+    // }
+
+
+
     const [finishedCard, setFinishedCard] = useState("finishedCard hidden");
     const [finishedCardTittle, setfinishedCardTittle] = useState("");
     const [finishedCardIconClass, setfinishedCardIconClass] = useState("");
@@ -38,6 +50,8 @@ function BackCard(props) {
         setfinishedCardTittle("frontCardTittle missed");
         setfinishedCardIconClass("questionIcon missed");
         setfinishedCardIconName("close-circle");
+        newFooterData = {class: "footerIcon missed" ,name: "close-circle"}
+        // addFooterData();
         cardActive = 0;
     }
 
@@ -109,7 +123,6 @@ function BackCard(props) {
                 <ion-icon className={finishedCardIconClass} name={finishedCardIconName}></ion-icon>
             </div>
         </div>
-        
     </>
     )
    
@@ -162,7 +175,15 @@ function List() {
 }
 
 export default function Deck() {
+
+    const [footerData, setFooterData] = useState([]);
+
   return (
-      <List />
+
+
+    <>
+        <List />
+        <Footer />
+    </>  
   );
 }
