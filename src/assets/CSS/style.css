@@ -79,6 +79,7 @@ h1 {
     align-items: center;
     justify-content: space-between;
     width: inherit;
+    height: inherit;
 }
 p {
     font-family: 'Recursive', sans-serif;
@@ -115,6 +116,11 @@ p {
     font-family: 'Recursive', sans-serif;
     color: #333333;
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+}
+.buttonEnter {
+    display: flex;
+    justify-content: center;
+    margin: 0.3rem 1rem
 }
 .backCard {
     height: inherit;
