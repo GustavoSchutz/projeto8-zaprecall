@@ -111,6 +111,7 @@ h1 {
     background-color: #ffffff;
     height: 10vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     font-family: 'Recursive', sans-serif;
@@ -212,7 +213,13 @@ h3 {
     color: green;
     text-decoration: line-through;
 }
-
+.white ion-icon {
+    color: transparent;
+}
+.footerIcons{
+    display: flex;
+    padding-right: 1rem;
+}
 
 /* NEED TO BE ON THE BOTTOM */
 .hidden {

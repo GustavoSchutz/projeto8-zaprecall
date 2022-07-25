@@ -21,15 +21,15 @@ function FrontCard(props) {
     )
 }
 
+
+let newFooterData;
+
 function BackCard(props) {
 
-    let newFooterData;
 
-
-
-    // function addFooterData() {
-    //     setFooterData(...footerData, newFooterData);
-    // }
+    function addFooterData(obj) {
+         props.setFooterData( [...props.footerData, obj ] );
+    }
 
 
 
@@ -42,8 +42,9 @@ function BackCard(props) {
 
     const [answerCardVisibility, setAnswerCardVisibility] = useState("anwerCard hidden")
 
+
     function handleButtonMissed() {
-        console.log("handelou o clique");
+        props.setCountAnswer(props.countAnswer + 1)
         // setCardClass("card");
         setAnswerCardVisibility("anwerCard hidden");
         setFinishedCard("finishedCard");
@@ -51,27 +52,37 @@ function BackCard(props) {
         setfinishedCardIconClass("questionIcon missed");
         setfinishedCardIconName("close-circle");
         newFooterData = {class: "footerIcon missed" ,name: "close-circle"}
-        // addFooterData();
+        addFooterData(newFooterData);
         cardActive = 0;
+   
+
     }
 
     function handleButtonAlmost() {
+        props.setCountAnswer(props.countAnswer + 1)
+
         setAnswerCardVisibility("anwerCard hidden");
         setFinishedCard("finishedCard");
         setfinishedCardTittle("frontCardTittle almost");
         setfinishedCardIconClass("questionIcon almost");
         setfinishedCardIconName("help-circle");
+        newFooterData = {class: "footerIcon almost" ,name: "help-circle"}
+        addFooterData(newFooterData);
         cardActive = 0;
         // rightAnswers++
-
+        
     }
 
     function handleButtonZap() {
+        props.setCountAnswer(props.countAnswer + 1)
+
         setAnswerCardVisibility("anwerCard hidden");
         setFinishedCard("finishedCard");
         setfinishedCardTittle("frontCardTittle zap");
         setfinishedCardIconClass("questionIcon zap");
         setfinishedCardIconName("checkmark-circle");
+        newFooterData = {class: "footerIcon zap" ,name: "checkmark-circle"}
+        addFooterData(newFooterData);
         cardActive = 0;
         // rightAnswers++
     }
@@ -132,7 +143,7 @@ let cardActive = 0;
 
 
 
-function Cards({d}) {
+function Cards(props) {
 
 
     const [cardClass, setCardClass] = useState("card");
@@ -154,21 +165,21 @@ function Cards({d}) {
     }
 
   return (
-    <li key={d.key} className={cardClass}
+    <li key={props.d.key} className={cardClass}
       onClick={() => {
         startZap();
       }}
     >
-      {checked ? <BackCard d={d} changeClass={cardClass => setCardClass(cardClass)} /> : <FrontCard d={d} />}
+      {checked ? <BackCard countAnswer={props.countAnswer} setCountAnswer={props.setCountAnswer} footerData={props.footerData} setFooterData={props.setFooterData} d={props.d} changeClass={cardClass => setCardClass(cardClass)} /> : <FrontCard d={props.d} />}
     </li>
   );
 }
 
-function List() {
+function List(props) {
   return (
     <ul>
       {deckdata.map((d) => {
-        return <Cards d={d} />;
+        return <Cards countAnswer={props.countAnswer} setCountAnswer={props.setCountAnswer} footerData={props.footerData} setFooterData={props.setFooterData} d={d} />;
       })}
     </ul>
   );
@@ -176,14 +187,16 @@ function List() {
 
 export default function Deck() {
 
-    const [footerData, setFooterData] = useState([]);
+    const [footerData, setFooterData] = useState([{name:"heart", class:"white"}]);
+    const [countAnswer, setCountAnswer] = useState(0)
+
 
   return (
 
 
     <>
-        <List />
-        <Footer />
+        <List countAnswer={countAnswer} setCountAnswer={setCountAnswer} setFooterData={setFooterData} footerData={footerData} />
+        <Footer countAnswer={countAnswer} footerData={footerData} />
     </>  
   );
 }
