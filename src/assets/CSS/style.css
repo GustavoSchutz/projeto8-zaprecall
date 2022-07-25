@@ -81,7 +81,7 @@ h1 {
     width: inherit;
     height: inherit;
 }
-p {
+.frontCardTittle {
     font-family: 'Recursive', sans-serif;
     margin-left: 1rem;
 }
@@ -129,7 +129,7 @@ p {
     flex-direction: column;
     justify-content: space-between;
 }
-.question {
+.question, .answer {
     margin: .7rem 0 0 .7rem;
 }
 h3 {
@@ -140,6 +140,52 @@ h3 {
     display: flex;
     justify-content: flex-end;
 }
+.buttons {
+    width: inherit;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: .5rem;
+}
+.answerCard {
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.buttonMissed {
+    background-color: red;
+    height: 5vh;
+    border-radius: 8px;
+    width: 18vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.buttonAlmost {
+    background-color: orange;
+    height: 5vh;
+    border-radius: 8px;
+    width: 26vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.buttonZap {
+    background-color: green;
+    height: 5vh;
+    border-radius: 8px;
+    width: 16vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.paragraphButtonsSubmit {
+    font-size: .9rem;
+    text-align: center;
+    margin: 0;
+    font-family: 'Recursive', sans-serif;
+}
+
 
 /* NEED TO BE ON THE BOTTOM */
 .hidden {
