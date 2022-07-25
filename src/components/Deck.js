@@ -54,6 +54,11 @@ function BackCard(props) {
         newFooterData = {class: "footerIcon missed" ,name: "close-circle"}
         addFooterData(newFooterData);
         cardActive = 0;
+        errorCounter++;
+        answeredCounter++;
+        if (answeredCounter === 4) {
+            props.setNoError(false);
+        }
    
 
     }
@@ -70,6 +75,11 @@ function BackCard(props) {
         addFooterData(newFooterData);
         cardActive = 0;
         // rightAnswers++
+        answeredCounter++;
+        correctCounter++;
+        if (answeredCounter === 4 && correctCounter === 4) {
+            props.setNoError(true);
+        }
         
     }
 
@@ -85,6 +95,11 @@ function BackCard(props) {
         addFooterData(newFooterData);
         cardActive = 0;
         // rightAnswers++
+        answeredCounter++;
+        correctCounter++;
+        if (answeredCounter === 4 && correctCounter === 4) {
+            props.setNoError(true);
+        }
     }
 
     function handleClickSubmit() {
@@ -170,7 +185,7 @@ function Cards(props) {
         startZap();
       }}
     >
-      {checked ? <BackCard countAnswer={props.countAnswer} setCountAnswer={props.setCountAnswer} footerData={props.footerData} setFooterData={props.setFooterData} d={props.d} changeClass={cardClass => setCardClass(cardClass)} /> : <FrontCard d={props.d} />}
+      {checked ? <BackCard setNoError={props.setNoError} countAnswer={props.countAnswer} setCountAnswer={props.setCountAnswer} footerData={props.footerData} setFooterData={props.setFooterData} d={props.d} changeClass={cardClass => setCardClass(cardClass)} /> : <FrontCard d={props.d} />}
     </li>
   );
 }
@@ -179,24 +194,29 @@ function List(props) {
   return (
     <ul>
       {deckdata.map((d) => {
-        return <Cards countAnswer={props.countAnswer} setCountAnswer={props.setCountAnswer} footerData={props.footerData} setFooterData={props.setFooterData} d={d} />;
+        return <Cards setNoError={props.setNoError} countAnswer={props.countAnswer} setCountAnswer={props.setCountAnswer} footerData={props.footerData} setFooterData={props.setFooterData} d={d} />;
       })}
     </ul>
   );
 }
 
+let errorCounter = 0;
+let correctCounter = 0;
+let answeredCounter = 0;
+
 export default function Deck() {
 
     const [footerData, setFooterData] = useState([{name:"heart", class:"white"}]);
-    const [countAnswer, setCountAnswer] = useState(0)
+    const [countAnswer, setCountAnswer] = useState(0);
+    const [noError, setNoError] = useState(null)
 
 
   return (
 
 
     <>
-        <List countAnswer={countAnswer} setCountAnswer={setCountAnswer} setFooterData={setFooterData} footerData={footerData} />
-        <Footer countAnswer={countAnswer} footerData={footerData} />
+        <List countAnswer={countAnswer} setNoError={setNoError} setCountAnswer={setCountAnswer} setFooterData={setFooterData} footerData={footerData} />
+        <Footer countAnswer={countAnswer} footerData={footerData} noError={noError} />
     </>  
   );
 }

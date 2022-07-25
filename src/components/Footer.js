@@ -4,7 +4,7 @@ function FooterIcons(props){
         <>
         <div className={props.f.class}>
             <ion-icon className={props.f.class} name={props.f.name}></ion-icon>
-        </div>   
+        </div>
         </>
     )
 }
@@ -25,6 +25,22 @@ function FooterData(props) {
     )
 }
 
+function Congrats() {
+    return (
+        <div className="parabens">
+            <p>PARABEINS :D</p>
+        </div>
+    )
+}
+
+function TryAgain() {
+    return (
+        <div className="tryagain">
+            <p>TENTE NOVAMENTE D:</p>
+        </div>
+    )
+}
+
 
 export default function Footeer(props) {
 
@@ -32,7 +48,10 @@ export default function Footeer(props) {
     return (
         <div>
             <div className="footer">
-                
+                {props.noError ? <Congrats />
+                : !props.noError ? <TryAgain />
+                :  <div></div>            
+            }
                 <FooterData countAnswer={props.countAnswer} footerData={props.footerData} />
             </div>
         </div>
